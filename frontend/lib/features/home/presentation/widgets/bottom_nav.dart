@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class CustomBottomNav extends StatelessWidget {
   final int currentIndex;
-  final ValueChanged? onTap;
+  final ValueChanged<int>? onTap; // Ditambahkan tipe <int>
 
   const CustomBottomNav({
     super.key,

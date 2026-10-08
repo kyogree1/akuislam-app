@@ -13,26 +13,23 @@ class HeaderWidget extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(16),
               child: Image.asset(
-                'assets/iconakumuslim.jpeg', // Path disesuaikan dengan nama file
+                'assets/iconakumuslim.jpeg',
                 width: 48,
                 height: 48,
                 fit: BoxFit.cover,
               ),
-            ), // Tanda koma ditambahkan di sini
+            ),
             const SizedBox(width: 12),
-            Column(
+            const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 Text(
                   'Assalamu\'alaikum',
                   style: TextStyle(color: Colors.black54, fontSize: 13),
                 ),
                 Text(
                   'Halo, Azka 👋',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
               ],
             ),
