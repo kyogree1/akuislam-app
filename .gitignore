@@ -1,0 +1,6 @@
+# Tooling / generated, bukan bagian aplikasi
+.androidcli/
+graphify-out/
+
+# Log
+*.log
