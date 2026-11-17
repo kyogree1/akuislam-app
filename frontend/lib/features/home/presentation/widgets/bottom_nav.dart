@@ -4,11 +4,7 @@ class CustomBottomNav extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int>? onTap; // Ditambahkan tipe <int>
 
-  const CustomBottomNav({
-    super.key,
-    this.currentIndex = 0,
-    this.onTap,
-  });
+  const CustomBottomNav({super.key, this.currentIndex = 0, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +14,7 @@ class CustomBottomNav extends StatelessWidget {
       unselectedItemColor: Colors.grey,
       currentIndex: currentIndex,
       onTap: onTap,
+      type: BottomNavigationBarType.fixed,
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home_rounded),
@@ -30,6 +27,10 @@ class CustomBottomNav extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.bookmark_border_rounded),
           label: 'Bookmark',
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.history_rounded),
+          label: 'History',
         ),
       ],
     );

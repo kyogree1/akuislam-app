@@ -9,9 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  sqflite: ^2.3.0
+  path: ^1.8.3
+  http: ^1.1.0
 
-  cupertino_icons: ^1.0.8
-  http: ^1.6.0
 
 dev_dependencies:
   flutter_test:
@@ -23,8 +24,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/
+    - assets/iconakumuslim.jpeg
   
 flutter_icons:
   android: true
-  image_path: "/home/azkaaa/Kuliah/PAPB/akumuslim/akumuslimtest/assets/iconakumuslim.jpeg"
+  image_path: "assets/iconakumuslim.jpeg"
