@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../data/services/quran_api_service.dart';
+import '../../data/repositories/quran_repository.dart';
 import '../../data/models/surah_model_api.dart';
 import '../widgets/bottom_nav.dart';
 
@@ -12,7 +12,7 @@ class QuranPage extends StatefulWidget {
 }
 
 class _QuranPageState extends State<QuranPage> {
-  final _api = QuranApiService();
+  final _repo = QuranRepository();
   late Future<List<SurahModelApi>> _surahsFuture;
   String _query = '';
 
@@ -23,7 +23,7 @@ class _QuranPageState extends State<QuranPage> {
   }
 
   Future<List<SurahModelApi>> _fetchSurahs() async {
-    return await _api.getAllSurah();
+    return await _repo.getSurahs();
   }
 
   @override

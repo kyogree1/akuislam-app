@@ -2,5 +2,9 @@
 .androidcli/
 graphify-out/
 
+# Sumber JSON mentah Quran (dibangun ulang dengan tool/fetch_quran_assets.py).
+# Yang di-commit cukup assets/quran.db.
+frontend/assets/quran/
+
 # Log
 *.log

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/database/app_db.dart';
-import '../../data/services/quran_api_service.dart';
+import '../../data/repositories/quran_repository.dart';
 import '../../data/models/ayat_model.dart';
 import '../widgets/bottom_nav.dart';
 
@@ -20,7 +20,7 @@ class IsiSurahPage extends StatefulWidget {
 }
 
 class _IsiSurahPageState extends State<IsiSurahPage> {
-  final _api = QuranApiService();
+  final _repo = QuranRepository();
   final _db = AppDB.instance;
   late Future<List<AyatModel>> _ayatFuture;
   bool _isBookmarked = false;
@@ -33,7 +33,7 @@ class _IsiSurahPageState extends State<IsiSurahPage> {
   }
 
   Future<List<AyatModel>> _fetchAyat() async {
-    final ayat = await _api.getSurahDetail(widget.nomorSurah);
+    final ayat = await _repo.getAyat(widget.nomorSurah);
     try {
       await _db.saveLastRead(
         surahId: widget.nomorSurah,

@@ -1,3 +1,5 @@
+"""Bangun assets/quran.db dari JSON equran.id hasil tool/fetch_quran_assets.py."""
+
 import json
 import sqlite3
 from pathlib import Path
@@ -13,23 +15,39 @@ if OUT.exists():
 con = sqlite3.connect(OUT)
 cur = con.cursor()
 cur.execute(
-    "CREATE TABLE surahs(nomor INTEGER PRIMARY KEY, namaLatin TEXT, jumlahAyat INTEGER, tempatTurun TEXT, arti TEXT)"
+    "CREATE TABLE surahs(nomor INTEGER PRIMARY KEY, nama TEXT, namaLatin TEXT, "
+    "jumlahAyat INTEGER, tempatTurun TEXT, arti TEXT, deskripsi TEXT)"
 )
 cur.execute(
-    "CREATE TABLE ayat(surah INTEGER NOT NULL, nomor INTEGER NOT NULL, arab TEXT NOT NULL, indo TEXT NOT NULL, PRIMARY KEY(surah, nomor))"
+    "CREATE TABLE ayat(surah INTEGER NOT NULL, nomor INTEGER NOT NULL, "
+    "arab TEXT NOT NULL, latin TEXT, indo TEXT NOT NULL, PRIMARY KEY(surah, nomor))"
 )
 cur.execute("CREATE INDEX idx_ayat_surah ON ayat(surah, nomor)")
 
 for s in meta:
     cur.execute(
-        "INSERT INTO surahs VALUES(?,?,?,?,?)",
-        (s["nomor"], s["namaLatin"], s["jumlahAyat"], s["tempatTurun"], s["arti"]),
+        "INSERT INTO surahs VALUES(?,?,?,?,?,?,?)",
+        (
+            s["nomor"],
+            s.get("nama", ""),
+            s["namaLatin"],
+            s["jumlahAyat"],
+            s["tempatTurun"],
+            s["arti"],
+            s.get("deskripsi", ""),
+        ),
     )
     data = json.loads((SRC / "ayat" / f"{s['nomor']}.json").read_text(encoding="utf-8"))
     for a in data["data"]["ayat"]:
         cur.execute(
-            "INSERT OR REPLACE INTO ayat VALUES(?,?,?,?)",
-            (s["nomor"], a["nomorAyat"], a["teksArab"], a["teksIndonesia"]),
+            "INSERT OR REPLACE INTO ayat VALUES(?,?,?,?,?)",
+            (
+                s["nomor"],
+                a["nomorAyat"],
+                a["teksArab"],
+                a.get("teksLatin", ""),
+                a["teksIndonesia"],
+            ),
         )
 
 con.commit()
