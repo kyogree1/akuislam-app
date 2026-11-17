@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'core/database/app_db.dart';
 import 'features/home/presentation/pages/bookmark_page.dart';
 import 'features/home/presentation/pages/history_page.dart';
 import 'features/home/presentation/pages/home_page.dart';
 import 'features/home/presentation/pages/isi_surah_page.dart';
 import 'features/home/presentation/pages/quran_page.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
+  try {
+    // Buka DB sebelum UI tampil supaya aksi pertama tidak menanggung biaya init.
+    await AppDB.instance.database;
+  } catch (_) {
+    // Gagal buka DB tidak boleh menghalangi app start; fitur simpan yang error.
+  }
   runApp(const MyApp());
 }
 

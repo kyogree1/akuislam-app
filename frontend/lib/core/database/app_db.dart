@@ -5,6 +5,7 @@ import 'package:path/path.dart';
 class AppDB {
   static final AppDB instance = AppDB._init();
   static Database? _database;
+  static Future<Database>? _opening;
   static final List<Map<String, dynamic>> _memoryBookmarks = [];
   static int _memoryIdCounter = 1;
   static final List<Map<String, dynamic>> _memoryHistory = [];
@@ -12,10 +13,21 @@ class AppDB {
 
   AppDB._init();
 
-  Future<Database> get database async {
-    if (_database != null) return _database!;
-    _database = await _initDB('akumuslim.db');
-    return _database!;
+  Future<Database> get database {
+    final db = _database;
+    if (db != null) return Future.value(db);
+    // Single-flight: beberapa pemanggil bersamaan berbagi satu proses buka DB.
+    return _opening ??= _open();
+  }
+
+  Future<Database> _open() async {
+    try {
+      final db = await _initDB('akumuslim.db');
+      _database = db;
+      return db;
+    } finally {
+      _opening = null;
+    }
   }
 
   Future<Database> _initDB(String filePath) async {

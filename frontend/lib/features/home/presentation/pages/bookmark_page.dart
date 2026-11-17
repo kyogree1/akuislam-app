@@ -41,24 +41,35 @@ class _BookmarkPageState extends State<BookmarkPage> {
 
   Future<void> _deleteBookmark(Map<String, dynamic> bookmark) async {
     final id = bookmark['id'] as int;
+    final index = _bookmarks.indexWhere((item) => item['id'] == id);
+    if (index < 0) return;
+
+    final removed = _bookmarks[index];
+    // Optimistic: baris langsung hilang, tulis DB menyusul.
+    setState(() => _bookmarks = List.of(_bookmarks)..removeAt(index));
+
     try {
       await _db.deleteBookmark(id);
     } catch (_) {
       if (!mounted) return;
+      setState(
+        () =>
+            _bookmarks = List.of(_bookmarks)
+              ..insert(index.clamp(0, _bookmarks.length), removed),
+      );
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text('Gagal menghapus bookmark')));
       return;
     }
-    if (!mounted) return;
-    await _loadBookmarks();
+
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: const Text('Bookmark dihapus'),
         action: SnackBarAction(
           label: 'Urungkan',
-          onPressed: () => _restoreBookmark(bookmark),
+          onPressed: () => _restoreBookmark(removed),
         ),
       ),
     );
@@ -71,6 +82,9 @@ class _BookmarkPageState extends State<BookmarkPage> {
         surahName: bookmark['surah_name'] as String,
       );
     } catch (_) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text('Gagal mengurungkan')));
       return;
     }
     await _loadBookmarks();
@@ -104,6 +118,7 @@ class _BookmarkPageState extends State<BookmarkPage> {
                 itemBuilder: (context, index) {
                   final bookmark = _bookmarks[index];
                   return Card(
+                    key: ValueKey(bookmark['id']),
                     child: ListTile(
                       leading: const CircleAvatar(
                         backgroundColor: Color(0xFFFFF0DD),

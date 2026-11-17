@@ -43,19 +43,20 @@ class _HistoryPageState extends State<HistoryPage> {
     );
     if (confirmed != true) return;
 
+    final previous = await _history;
+    if (!mounted) return;
+    // Optimistic: daftar langsung kosong, hapus DB menyusul.
+    setState(() => _history = Future.value(const []));
+
     try {
       await _db.deleteAllHistory();
     } catch (_) {
       if (!mounted) return;
+      setState(() => _history = Future.value(previous));
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text('Gagal menghapus riwayat')));
-      return;
     }
-    if (!mounted) return;
-    final history = await _db.getHistory();
-    if (!mounted) return;
-    setState(() => _history = Future.value(history));
   }
 
   @override
