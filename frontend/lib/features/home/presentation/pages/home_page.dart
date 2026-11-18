@@ -55,7 +55,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         SizedBox(height: 4),
                         Text(
-                          'Halo, Azka',
+                          'Selamat Membaca',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 22,

@@ -1,5 +1,6 @@
-name: akumuslim
-description: "A new Flutter project."
+name: akuislam
+description: "Al-Qur'an offline dengan bookmark dan riwayat baca."
+version: 1.0.0+1
 
 publish_to: 'none' 
 
