@@ -64,6 +64,11 @@ class _HomePageState extends State<HomePage> {
                       ],
                     ),
                   ),
+                  IconButton(
+                    icon: const Icon(Icons.info_outline),
+                    tooltip: 'Tentang',
+                    onPressed: () => Navigator.pushNamed(context, '/about'),
+                  ),
                 ],
               ),
 

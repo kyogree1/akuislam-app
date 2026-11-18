@@ -1,10 +1,10 @@
-import 'package:akumuslim/main.dart';
-import 'package:akumuslim/core/utils/relative_time.dart';
-import 'package:akumuslim/features/home/presentation/pages/bookmark_page.dart';
-import 'package:akumuslim/features/home/presentation/pages/history_page.dart';
-import 'package:akumuslim/features/home/presentation/pages/home_page.dart';
-import 'package:akumuslim/features/home/presentation/pages/isi_surah_page.dart';
-import 'package:akumuslim/features/home/presentation/pages/quran_page.dart';
+import 'package:akuislam/main.dart';
+import 'package:akuislam/core/utils/relative_time.dart';
+import 'package:akuislam/features/home/presentation/pages/bookmark_page.dart';
+import 'package:akuislam/features/home/presentation/pages/history_page.dart';
+import 'package:akuislam/features/home/presentation/pages/home_page.dart';
+import 'package:akuislam/features/home/presentation/pages/isi_surah_page.dart';
+import 'package:akuislam/features/home/presentation/pages/quran_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

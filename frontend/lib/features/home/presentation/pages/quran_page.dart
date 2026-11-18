@@ -82,24 +82,27 @@ class _QuranPageState extends State<QuranPage> {
 
                   if (snapshot.hasError) {
                     return Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.error_outline,
-                            size: 48,
-                            color: Colors.grey,
-                          ),
-                          const SizedBox(height: 12),
-                          Text('Error: ${snapshot.error}'),
-                          const SizedBox(height: 12),
-                          ElevatedButton(
-                            onPressed: () => setState(() {
-                              _surahsFuture = _fetchSurahs();
-                            }),
-                            child: const Text('Coba lagi'),
-                          ),
-                        ],
+                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.all(24),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              Icons.error_outline,
+                              size: 48,
+                              color: Colors.grey,
+                            ),
+                            const SizedBox(height: 12),
+                            Text('Error: ${snapshot.error}'),
+                            const SizedBox(height: 12),
+                            ElevatedButton(
+                              onPressed: () => setState(() {
+                                _surahsFuture = _fetchSurahs();
+                              }),
+                              child: const Text('Coba lagi'),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   }

@@ -1,5 +1,5 @@
-import 'package:akumuslim/core/database/app_db.dart';
-import 'package:akumuslim/features/home/presentation/pages/history_page.dart';
+import 'package:akuislam/core/database/app_db.dart';
+import 'package:akuislam/features/home/presentation/pages/history_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'core/database/app_db.dart';
+import 'features/home/presentation/pages/about_page.dart';
 import 'features/home/presentation/pages/bookmark_page.dart';
 import 'features/home/presentation/pages/history_page.dart';
 import 'features/home/presentation/pages/home_page.dart';
@@ -62,6 +63,9 @@ class MyApp extends StatelessWidget {
             break;
           case '/history':
             page = const HistoryPage();
+            break;
+          case '/about':
+            page = const AboutPage();
             break;
           case '/isi-surah':
             final data = settings.arguments as Map<String, dynamic>;
