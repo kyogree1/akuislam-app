@@ -25,9 +25,13 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/iconakumuslim.jpeg
+    - assets/branding/app_logo.png
     - assets/quran.db
   
-flutter_icons:
+flutter_launcher_icons:
   android: true
-  image_path: "assets/iconakumuslim.jpeg"
+  ios: false
+  image_path: "assets/branding/app_icon.png"
+  adaptive_icon_background: "#0C331E"
+  adaptive_icon_foreground: "assets/branding/app_icon_foreground.png"
+  min_sdk_android: 24

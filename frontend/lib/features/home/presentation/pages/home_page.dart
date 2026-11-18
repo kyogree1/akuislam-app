@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                   ClipRRect(
                     borderRadius: BorderRadius.circular(14),
                     child: Image.asset(
-                      'assets/iconakumuslim.jpeg',
+                      'assets/branding/app_logo.png',
                       width: 52,
                       height: 52,
                       fit: BoxFit.cover,
