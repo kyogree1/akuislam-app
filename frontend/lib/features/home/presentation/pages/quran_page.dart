@@ -94,8 +94,9 @@ class _QuranPageState extends State<QuranPage> {
                           Text('Error: ${snapshot.error}'),
                           const SizedBox(height: 12),
                           ElevatedButton(
-                            onPressed: () =>
-                                setState(() => _surahsFuture = _fetchSurahs()),
+                            onPressed: () => setState(() {
+                              _surahsFuture = _fetchSurahs();
+                            }),
                             child: const Text('Coba lagi'),
                           ),
                         ],

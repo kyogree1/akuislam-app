@@ -125,7 +125,9 @@ class _IsiSurahPageState extends State<IsiSurahPage> {
                   Text('Error: ${snapshot.error}'),
                   const SizedBox(height: 12),
                   ElevatedButton(
-                    onPressed: () => setState(() => _ayatFuture = _fetchAyat()),
+                    onPressed: () => setState(() {
+                      _ayatFuture = _fetchAyat();
+                    }),
                     child: const Text('Coba lagi'),
                   ),
                 ],

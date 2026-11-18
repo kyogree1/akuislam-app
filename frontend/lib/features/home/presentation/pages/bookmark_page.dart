@@ -15,11 +15,25 @@ class _BookmarkPageState extends State<BookmarkPage> {
   List<Map<String, dynamic>> _bookmarks = [];
   bool _isLoading = true;
   bool _loadFailed = false;
+  ScaffoldMessengerState? _messenger;
 
   @override
   void initState() {
     super.initState();
     _loadBookmarks();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _messenger = ScaffoldMessenger.of(context);
+  }
+
+  @override
+  void dispose() {
+    // SnackBar "Urungkan" milik halaman ini, jangan sampai ikut ke halaman lain.
+    _messenger?.removeCurrentSnackBar();
+    super.dispose();
   }
 
   Future<void> _loadBookmarks() async {
