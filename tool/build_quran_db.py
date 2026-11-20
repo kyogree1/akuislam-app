@@ -4,7 +4,7 @@ import json
 import sqlite3
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1] / "frontend"
+ROOT = Path(__file__).resolve().parents[1] / "akuislam"
 SRC = ROOT / "assets" / "quran"
 OUT = ROOT / "assets" / "quran.db"
 

@@ -1,7 +1,7 @@
 """Unduh data Al-Qur'an dari equran.id untuk membangun assets/quran.db.
 
 Sumber: https://equran.id/api/v2
-Output: frontend/assets/quran/surat.json + frontend/assets/quran/ayat/{1..114}.json
+Output: akuislam/assets/quran/surat.json + akuislam/assets/quran/ayat/{1..114}.json
 File JSON mentah tidak di-commit; cukup quran.db hasil build_quran_db.py.
 """
 
@@ -12,7 +12,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1] / "frontend"
+ROOT = Path(__file__).resolve().parents[1] / "akuislam"
 DEST = ROOT / "assets" / "quran"
 BASE = "https://equran.id/api/v2"
 HEADERS = {"User-Agent": "akumuslim-app/1.0"}

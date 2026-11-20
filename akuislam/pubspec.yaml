@@ -1,6 +1,6 @@
 name: akuislam
 description: "Al-Qur'an offline dengan bookmark dan riwayat baca."
-version: 1.0.0+2
+version: 1.0.0+3
 
 publish_to: 'none' 
 

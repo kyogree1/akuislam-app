@@ -8,21 +8,21 @@
             "name": "akumuslim Debug mode",
             "request": "launch",
             "type": "dart",
-            "program": "frontend/lib/main.dart"
+            "program": "akuislam/lib/main.dart"
         },
         {
             "name": "akumuslim (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile",
-            "program": "frontend/lib/main.dart"
+            "program": "akuislam/lib/main.dart"
         },
         {
             "name": "akumuslim (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",
-            "program": "frontend/lib/main.dart"
+            "program": "akuislam/lib/main.dart"
         }
     ]
 }

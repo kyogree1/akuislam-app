@@ -8,7 +8,7 @@ from PIL import Image, ImageDraw, ImageFont
 from pathlib import Path
 
 SRC = Path("tool/branding/icon_master.png")
-OUT = Path("frontend/assets/branding")
+OUT = Path("akuislam/assets/branding")
 OUT.mkdir(parents=True, exist_ok=True)
 
 GREEN = (0x0C, 0x33, 0x1E)
